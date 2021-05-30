@@ -1,0 +1,40 @@
+<div class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Idade</th>
+      <th scope="col">Altura</th>
+      <th scope="col">Peso</th>
+      <th scope="col">Sexo</th>
+      <th scope="col">Sintomas</th>
+      <th scope="col">TesteCovid</th>
+      <th scope="col">Doente Cronico</th>
+      <th scope="col">Grupo de Risco</th>
+      <th scope="col">Triste ou Ansioso</th>
+      <th scope="col">IMC</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let pac of pacientes; let i = index">
+      <td>{{i + 1}}</td>
+      <td>{{ pac.nome }}</td>
+      <td>{{pac.idade }}</td>
+      <td>{{pac.altura }}</td>
+      <td>{{pac.peso }}</td>
+      <td>{{pac.sexo }}</td>
+      <td>{{pac.sintomas }}</td>
+      <td>{{pac.teste }}</td>
+      <td>{{pac.cronico }}</td>
+      <td>{{pac.risco }}</td>
+      <td>{{pac.mental }}</td>
+      <td>{{pac.imc }}</td>
+      <td>
+        <button class="btn btn-primary btn-sm mx-auto" routerLink='edit/{{pac._id}}'>Editar</button>
+        <button class="btn btn-danger btn-sm mx-auto" (click)="deleteData(pac._id)">deletar</button>
+      </td>
+    </tr>
+  </tbody>
+</div>
