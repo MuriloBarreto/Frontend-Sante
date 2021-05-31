@@ -1,4 +1,8 @@
-<div class="table">
+<div class="pricing-header pb-md-4 mx-auto text-center">
+  <h1 class="display-4 fw-normal">Pacientes</h1>
+</div>
+
+<div class="table table-dark table-striped">
   <thead>
     <tr>
       <th scope="col">ID</th>
@@ -17,6 +21,7 @@
     </tr>
   </thead>
 
+
   <tbody>
     <tr *ngFor="let pac of pacientes; let i = index">
       <td>{{i + 1}}</td>
@@ -32,8 +37,11 @@
       <td>{{pac.mental }}</td>
       <td>{{pac.imc }}</td>
       <td>
-        <button class="btn btn-primary btn-sm mx-auto" routerLink='edit/{{pac._id}}'>Editar</button>
-        <button class="btn btn-danger btn-sm mx-auto" (click)="deleteData(pac._id)">deletar</button>
+        <div class="btn-group-vertical" >
+        <button class="btn btn-primary btn-sm mt-1" routerLink='edit/{{pac._id}}'>Editar</button>
+        <button class="btn btn-danger btn-sm mt-1 " (click)="deleteData(pac._id)">deletar</button>
+        <button class="btn btn-success btn-sm  mt-1" routerLink='view/{{pac._id}}'>Visualizar</button>
+      </div>
       </td>
     </tr>
   </tbody>

@@ -13,17 +13,36 @@ export class AddPacienteComponent implements OnInit {
   form:FormGroup;
   submitted=false;
   data;
+  opSexo:any[];
+  opSintomas: any[];
+  opTeste: any[];
+  opCronico: any[];
+  opRisco: any[];
+  opMental: any[];
   constructor(private pacienteService: PacienteService, private formBuilder: FormBuilder, private toastr:ToastrService, private router:Router) { }
 
   createForm(){
     this.form = this.formBuilder.group({
-      name: ["", Validators.required],
-      email: ["", Validators.required, Validators.email],
-      salary: ["", Validators.required]
+      nome: ["", Validators.required],
+      idade: ["", Validators.required, Validators.email],
+      altura: ["", Validators.required],
+      peso: ["", Validators.required],
+      sexo: ["", Validators.required],
+      sintomas: ["", Validators.required],
+      teste: ["", Validators.required],
+      cronico: ["", Validators.required],
+      risco: ["", Validators.required],
+      mental: ["", Validators.required]
     })
   }
   ngOnInit(): void {
     this.createForm();
+    this.opSexo = this.getValor();
+    this.opSintomas = this.getSintomas();
+    this.opTeste = this.getTeste();
+    this.opCronico = this.getCronico();
+    this.opRisco = this.getRisco();
+    this.opMental = this.getMental();
   }
 
   get f(){
@@ -43,5 +62,43 @@ export class AddPacienteComponent implements OnInit {
         progressBar: true
       })
     })
+  }
+
+  getValor(){
+    return [
+      {valor: 'Masculino', desc: 'Masculino'},
+      {valor: 'Feminino', desc: 'Feminino'}
+    ]
+  }
+  getSintomas(){
+    return [
+      {valor: 'Ativos', desc: 'Ativos'},
+      {valor: 'Inativos', desc: 'Inativos'}
+    ]
+  }
+  getTeste(){
+    return [
+      {valor: 'Teste Positivo', desc: 'Teste Positivo'},
+      {valor: 'Teste Negativo', desc: 'Teste Negativo'},
+      {valor: 'Nunca Testou', desc: 'Nunca Testou'}
+    ]
+  }
+  getCronico(){
+    return[
+      {valor: 'Sim', desc: 'Sim'},
+      {valor: 'Não', desc: 'Não'}
+    ]
+  }
+  getRisco(){
+    return[
+      {valor: 'Sim', desc: 'Sim'},
+      {valor: 'Não', desc: 'Não'}
+    ]
+  }
+  getMental(){
+    return[
+      {valor: 'Sim', desc: 'Sim'},
+      {valor: 'Não', desc: 'Não'}
+    ]
   }
 }

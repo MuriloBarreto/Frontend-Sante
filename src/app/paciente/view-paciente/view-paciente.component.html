@@ -1,0 +1,127 @@
+<div class="form-title text-center">
+  <h2 class="text-dark">Vizualizar Usuario</h2>
+  <span class="text-black-50">Consulte os Dados do Usuario Abaixo</span>
+</div>
+
+<div class="container">
+<!-- form handling -->
+<form [formGroup]="form">
+
+<div class="form-group">
+  <div class="input-group mb-3" >
+    <span class="input-group-text text-light" style="background-color: black;" id="inputGroup-sizing-default">Nome</span>
+    <input type="text" class="form-control" formControlName="nome" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" disabled="disabled">
+  </div>
+</div>
+
+
+<div class="form-group">
+  <div class="input-group mb-3" >
+    <span class="input-group-text text-light" style="background-color: black;" id="inputGroup-sizing-default">Idade</span>
+    <input type="text" class="form-control" formControlName="idade" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" disabled="disabled">
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="input-group mb-3" >
+    <span class="input-group-text text-light" style="background-color: black;" id="inputGroup-sizing-default">Altura</span>
+    <input type="text" class="form-control" formControlName="altura" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" disabled="disabled">
+  </div>
+</div>
+
+
+<div class="form-group">
+  <div class="input-group mb-3" >
+    <span class="input-group-text text-light" style="background-color: black;" id="inputGroup-sizing-default">Peso</span>
+    <input type="text" class="form-control" formControlName="peso" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" disabled="disabled">
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="input-group mb-3" >
+    <span class="input-group-text text-light" style="background-color: black;" id="inputGroup-sizing-default">Sexo</span>
+    <input type="text" class="form-control" formControlName="sexo" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" disabled="disabled">
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="input-group mb-3" >
+    <span class="input-group-text text-light" style="background-color: black;" id="inputGroup-sizing-default">Tem Sintomas</span>
+    <input type="text" class="form-control" formControlName="sintomas" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" disabled="disabled">
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="input-group mb-3" >
+    <span class="input-group-text text-light" style="background-color: black;" id="inputGroup-sizing-default">Sobre o teste de Covid</span>
+    <input type="text" class="form-control" formControlName="teste" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" disabled="disabled">
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="input-group mb-3" >
+    <span class="input-group-text text-light" style="background-color: black;" id="inputGroup-sizing-default">É Doente Cronico</span>
+    <input type="text" class="form-control" formControlName="cronico" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" disabled="disabled">
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="input-group mb-3" >
+    <span class="input-group-text text-light" style="background-color: black;" id="inputGroup-sizing-default">É de Grupo de Risco:</span>
+    <input type="text" class="form-control" formControlName="risco" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" disabled="disabled">
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="input-group mb-3" >
+    <span class="input-group-text text-light" style="background-color: black;" id="inputGroup-sizing-default">Se sente Triste ou Ansioso:</span>
+    <input type="text" class="form-control" formControlName="mental" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" disabled="disabled">
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="input-group mb-3" >
+    <span class="input-group-text text-light" style="background-color: black;" id="inputGroup-sizing-default">IMC</span>
+    <input type="text" class="form-control" formControlName="imc" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" disabled="disabled">
+  </div>
+</div>
+
+       <div class="form-tittle text-center" >
+               <h2 class="text-dark mb-4">Recomendações</h2>
+               <div class="card text-center" *ngIf="camSintomas == ativos || camTeste == TestePositivo || camRisco == sim && camCronico == sim">
+
+                <div class="card-body" >
+                  <h5 class="card-title">Covid</h5>
+                  <p class="card-text">Para saber mais informações sobre o covid</p>
+                  <a [routerLink]="['/rec-covid']" class="btn btn-dark text-black">Clique Aqui</a>
+                </div>
+              </div>
+
+              <div class="card text-center mt-2" *ngIf="camMental == sim">
+
+                <div class="card-body" >
+                  <h5 class="card-title">Mental</h5>
+                  <p class="card-text">Para saber locais de clínicas de psicologia proximos a você</p>
+                  <a [routerLink]="['/map-mental']" class="btn btn-dark text-black">Clique Aqui</a>
+                </div>
+              </div>
+
+              <div class="card text-center mt-2">
+
+                <div class="card-body" >
+                  <h5 class="card-title">IMC</h5>
+                  <p class="card-text" *ngIf="camImc < 18.5">Abaixo do Peso</p>
+                  <p class="card-text" *ngIf="camImc >= 18.5 && camImc <= 24.9" >Peso normal</p>
+                  <p class="card-text" *ngIf="camImc >= 25 && camImc <= 29.9" >Sobrepeso</p>
+                  <p class="card-text" *ngIf="camImc >= 30 && camImc <= 34.9" >Obsidade grau I</p>
+                  <p class="card-text" *ngIf="camImc >= 35 && camImc <= 39.9" >Obsidade grau II</p>
+                  <p class="card-text" *ngIf="camImc >= 40" >Obsidade grau III ou mórbida</p>
+                  <a [routerLink]="['/bem-estar']" class="btn btn-dark text-black">Clique Aqui</a>
+                </div>
+              </div>
+
+        </div>
+
+
+</form>
+</div>

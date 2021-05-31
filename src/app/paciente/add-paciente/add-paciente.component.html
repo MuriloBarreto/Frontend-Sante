@@ -1,30 +1,118 @@
+<h1 class="display-4 fw-normal mb-5">Novo Paciente</h1>
 <div class="container">
   <form (ngSubmit)="insertData()" [formGroup]="form">
     <div class="form-group">
-      <label for="name">Name</label>
-      <input type="text" formControlName="name" [ngClass]="{ 'is-invalid':submitted && f.name.errors}"class="form-control" placeholder="Enter name">
+      <label for="nome">Nome</label>
+      <input type="text" formControlName="nome" [ngClass]="{ 'is-invalid':submitted && f.nome.errors}"class="form-control" placeholder="EX: Luke Skywalker">
 
-      <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-      <div *ngIf="f.name.errors.required">Name is required</div>
+      <div *ngIf="submitted && f.nome.errors" class="invalid-feedback">
+      <div *ngIf="f.nome.errors.required">Nome é requerido</div>
     </div>
     </div>
 
     <div class="form-group">
-      <label for="email">Email</label>
-      <input type="email" formControlName="email" [ngClass]="{ 'is-invalid':submitted && f.email.errors}" class="form-control" placeholder="Enter email">
+      <label for="idade">Idade</label>
+      <input type="text" formControlName="idade" [ngClass]="{ 'is-invalid':submitted && f.idade.errors}" class="form-control" placeholder="34">
 
-      <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-        <div *ngIf="f.email.errors.required">email is required</div>
+      <div *ngIf="submitted && f.idade.errors" class="invalid-feedback">
+        <div *ngIf="f.idade.errors.required">idade é requerido</div>
       </div>
     </div>
 
     <div class="form-group">
-      <label for="salary">Salary</label>
-      <input type="text" formControlName="salary" class="form-control" placeholder="Enter salary">
+      <label for="altura">Altura</label>
+      <input type="text" formControlName="altura" [ngClass]="{ 'is-invalid':submitted && f.altura.errors}"  class="form-control" placeholder="172">
+
+      <div *ngIf="submitted && f.altura.errors" class="invalid-feedback">
+        <div *ngIf="f.altura.errors.required">Altura é requerido</div>
+      </div>
     </div>
 
     <div class="form-group">
-      <button class="btn btn-dark btn-sm">Submit</button>
+      <label for="peso">Peso</label>
+      <input type="text" formControlName="peso" [ngClass]="{ 'is-invalid':submitted && f.peso.errors}"class="form-control" placeholder="68">
+
+      <div *ngIf="submitted && f.peso.errors" class="invalid-feedback">
+        <div *ngIf="f.peso.errors.required">Peso é requerido</div>
+      </div>
+    </div>
+
+
+
+    <div class="form-group" >
+      <label for="sexo" class="text-black">Sexo:</label><br>
+      <div class="form-check form-check-inline" *ngFor="let item of opSexo">
+          <input class="form-check-input" type="radio" formControlName="sexo" [ngClass]="{ 'is-invalid':submitted && f.sexo.errors}" id="inlineRadio1" [value]="item.valor">
+          <label class="form-check-label" for="inlineRadio1">{{ item.desc }}</label>
+      </div>
+
+      <div *ngIf="submitted && f.sexo.errors" class="invalid-feedback">
+        <div *ngIf="f.sexo.errors.required">Sexo é requerido</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="sintomas" class="text-black">Tem Sintomas:</label><br>
+      <div class="form-check form-check-inline" *ngFor="let i of opSintomas">
+        <input class="form-check-input" type="radio"  formControlName="sintomas" [ngClass]="{ 'is-invalid':submitted && f.sintomas.errors}" id="inlineRadio1" [value]="i.valor">
+        <label class="form-check-label" for="inlineRadio1">{{ i.desc }}</label>
+    </div>
+
+    <div *ngIf="submitted && f.sintomas.errors" class="invalid-feedback">
+      <div *ngIf="f.sintomas.errors.required">requerido</div>
+    </div>
+    </div>
+
+    <div class="form-group">
+      <label for="teste" class="text-black">Sobre o Teste de Covid:</label><br>
+      <div class="form-check form-check-inline" *ngFor="let i of opTeste">
+        <input class="form-check-input" type="radio" formControlName="teste" [ngClass]="{ 'is-invalid':submitted && f.teste.errors}" id="inlineRadio1" [value]="i.valor">
+        <label class="form-check-label" for="inlineRadio1">{{ i.desc }}</label>
+      </div>
+
+    <div *ngIf="submitted && f.teste.errors" class="invalid-feedback">
+      <div *ngIf="f.teste.errors.required">requerido</div>
+    </div>
+    </div>
+
+    <div class="form-group">
+      <label for="cronico" class="text-black">É Doente Cronico:</label><br>
+      <div class="form-check form-check-inline" *ngFor="let i of opCronico">
+        <input class="form-check-input" type="radio"  formControlName="cronico" [ngClass]="{ 'is-invalid':submitted && f.cronico.errors}" id="inlineRadio1" [value]="i.valor">
+        <label class="form-check-label" for="inlineRadio1">{{ i.desc }}</label>
+    </div>
+
+    <div *ngIf="submitted && f.cronico.errors" class="invalid-feedback">
+      <div *ngIf="f.cronico.errors.required">requerido</div>
+    </div>
+    </div>
+
+    <div class="form-group">
+      <label for="risco" class="text-black">É do Grupo de Risco:</label><br>
+      <div class="form-check form-check-inline" *ngFor="let i of opRisco">
+        <input class="form-check-input" type="radio" formControlName="risco" [ngClass]="{ 'is-invalid':submitted && f.risco.errors}" id="inlineRadio1" [value]="i.valor">
+        <label class="form-check-label" for="inlineRadio1">{{ i.desc }}</label>
+    </div>
+
+    <div *ngIf="submitted && f.risco.errors" class="invalid-feedback">
+      <div *ngIf="f.risco.errors.required">requerido</div>
+    </div>
+    </div>
+
+    <div class="form-group">
+      <label for="mental" class="text-black">Se Sente Triste ou Ansioso:</label><br>
+      <div class="form-check form-check-inline" *ngFor="let i of opMental">
+        <input class="form-check-input" type="radio" formControlName="mental" [ngClass]="{ 'is-invalid':submitted && f.mental.errors}" id="inlineRadio1" [value]="i.valor">
+        <label class="form-check-label" for="inlineRadio1">{{ i.desc }}</label>
+    </div>
+
+    <div *ngIf="submitted && f.mental.errors" class="invalid-feedback">
+      <div *ngIf="f.mental.errors.required">requerido</div>
+    </div>
+    </div>
+
+    <div class="form-group mt-2 mb-5">
+      <button class="btn btn-dark btn-sm">Salvar dados</button>
     </div>
   </form>
 </div>

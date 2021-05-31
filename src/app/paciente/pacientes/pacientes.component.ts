@@ -21,6 +21,7 @@ export class PacientesComponent implements OnInit {
       console.log(res);
       this.pacientes = res;
     })
+
   }
 
   deleteData(id){
