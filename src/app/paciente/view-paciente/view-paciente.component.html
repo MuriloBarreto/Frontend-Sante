@@ -1,6 +1,6 @@
-<div class="form-title text-center">
-  <h2 class="text-dark">Vizualizar Usuario</h2>
-  <span class="text-black-50">Consulte os Dados do Usuario Abaixo</span>
+<div class="form-title text-center mb-2">
+  <h2 class="text-light">Vizualizar Usuario</h2>
+  <span class="text-white-50">Consulte os Dados do Usuario Abaixo</span>
 </div>
 
 <div class="container">
@@ -86,11 +86,11 @@
   </div>
 </div>
 
-       <div class="form-tittle text-center" >
-               <h2 class="text-dark mb-4">Recomendações</h2>
+       <div class="form-tittle text-center mb-5" >
+               <h2 class="text-light mb-4">Recomendações</h2>
                <div class="card text-center" *ngIf="camSintomas == ativos || camTeste == TestePositivo || camRisco == sim && camCronico == sim">
 
-                <div class="card-body" >
+                <div class="card-body border border-1 border-dark" >
                   <h5 class="card-title">Covid</h5>
                   <p class="card-text">Para saber mais informações sobre o covid</p>
                   <a [routerLink]="['/rec-covid']" class="btn btn-dark text-black">Clique Aqui</a>
@@ -99,7 +99,7 @@
 
               <div class="card text-center mt-2" *ngIf="camMental == sim">
 
-                <div class="card-body" >
+                <div class="card-body border border-1 border-dark" >
                   <h5 class="card-title">Mental</h5>
                   <p class="card-text">Para saber locais de clínicas de psicologia proximos a você</p>
                   <a [routerLink]="['/map-mental']" class="btn btn-dark text-black">Clique Aqui</a>
@@ -108,7 +108,7 @@
 
               <div class="card text-center mt-2">
 
-                <div class="card-body" >
+                <div class="card-body border border-1 border-dark" >
                   <h5 class="card-title">IMC</h5>
                   <p class="card-text" *ngIf="camImc < 18.5">Abaixo do Peso</p>
                   <p class="card-text" *ngIf="camImc >= 18.5 && camImc <= 24.9" >Peso normal</p>

@@ -10,6 +10,8 @@ import { ToastrService } from 'ngx-toastr';
 export class PacientesComponent implements OnInit {
   pacientes:any;
   data: any;
+  pag : Number = 1 ;
+  contador : Number = 5;
   constructor(private pacienteService: PacienteService, private toastr: ToastrService) { }
 
   ngOnInit(): void {

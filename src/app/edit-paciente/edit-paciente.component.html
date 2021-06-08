@@ -24,8 +24,8 @@
     </div>
   </form>
 </div> -->
-
-<div class="container">
+<h1 class="display-4 fw-normal mb-5 ms-3 text-light">Editar Paciente</h1>
+<div class="container text-light">
   <form (ngSubmit)="updateData()" [formGroup]="form">
     <div class="form-group">
       <label for="nome">Nome</label>
@@ -58,7 +58,7 @@
 
 
     <div class="form-group" >
-      <label for="sexo" class="text-black">Sexo:</label>
+      <label for="sexo" class="text-black">Sexo:</label><br>
       <div class="form-check form-check-inline" *ngFor="let item of opSexo">
           <input class="form-check-input" type="radio" formControlName="sexo" id="inlineRadio1" [value]="item.valor">
           <label class="form-check-label" for="inlineRadio1">{{ item.desc }}</label>
@@ -67,7 +67,7 @@
     </div>
 
     <div class="form-group">
-      <label for="sintomas" class="text-black">Tem Sintomas:</label>
+      <label for="sintomas" class="text-black">Tem Sintomas:</label><br>
       <div class="form-check form-check-inline" *ngFor="let i of opSintomas">
         <input class="form-check-input" type="radio"  formControlName="sintomas" id="inlineRadio1" [value]="i.valor">
         <label class="form-check-label" for="inlineRadio1">{{ i.desc }}</label>
@@ -76,7 +76,7 @@
     </div>
 
     <div class="form-group">
-      <label for="teste" class="text-black">Sobre o Teste de Covid:</label>
+      <label for="teste" class="text-black">Sobre o Teste de Covid:</label><br>
       <div class="form-check form-check-inline" *ngFor="let i of opTeste">
         <input class="form-check-input" type="radio" formControlName="teste" id="inlineRadio1" [value]="i.valor">
         <label class="form-check-label" for="inlineRadio1">{{ i.desc }}</label>
@@ -85,7 +85,7 @@
     </div>
 
     <div class="form-group">
-      <label for="cronico" class="text-black">É Doente Cronico:</label>
+      <label for="cronico" class="text-black">É Doente Cronico:</label><br>
       <div class="form-check form-check-inline" *ngFor="let i of opCronico">
         <input class="form-check-input" type="radio"  formControlName="cronico" id="inlineRadio1" [value]="i.valor">
         <label class="form-check-label" for="inlineRadio1">{{ i.desc }}</label>
@@ -94,7 +94,7 @@
     </div>
 
     <div class="form-group">
-      <label for="risco" class="text-black">É do Grupo de Risco:</label>
+      <label for="risco" class="text-black">É do Grupo de Risco:</label><br>
       <div class="form-check form-check-inline" *ngFor="let i of opRisco">
         <input class="form-check-input" type="radio" formControlName="risco" id="inlineRadio1" [value]="i.valor">
         <label class="form-check-label" for="inlineRadio1">{{ i.desc }}</label>
@@ -104,7 +104,7 @@
     </div>
 
     <div class="form-group">
-      <label for="mental" class="text-black">Se Sente Triste ou Ansioso:</label>
+      <label for="mental" class="text-black">Se Sente Triste ou Ansioso:</label><br>
       <div class="form-check form-check-inline" *ngFor="let i of opMental">
         <input class="form-check-input" type="radio" formControlName="mental" id="inlineRadio1" [value]="i.valor">
         <label class="form-check-label" for="inlineRadio1">{{ i.desc }}</label>

@@ -1,0 +1,25 @@
+<div class="text-center col-md-4 mx-auto bg-white p-3 border rounded-3">
+  <main class="form-signin">
+    <form (ngSubmit)="insert()" [formGroup]="form">
+      <img class="mb-4" src="https://img.icons8.com/android/452/user.png" alt="" width="72" height="57">
+      <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
+
+      <div class="form-floating">
+        <input type="text" class="form-control" id="floatingInput" placeholder="nome" formControlName="nome">
+        <label for="floatingInput">name</label>
+      </div>
+      <div class="form-floating mt-2">
+        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" formControlName="email">
+        <label for="floatingInput">Email address</label>
+      </div>
+      <div class="form-floating mt-2">
+        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" formControlName="senha">
+        <label for="floatingPassword">Password</label>
+      </div>
+
+
+      <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Sign in</button>
+
+    </form>
+  </main>
+  </div>
