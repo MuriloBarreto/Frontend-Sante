@@ -10,11 +10,14 @@ import { MapaCComponent } from './redirecionamento/mapa-c/mapa-c.component'
 import { PacientesComponent } from './paciente/pacientes/pacientes.component';
 import {LoginComponent} from './auth/login/login.component';;
 import {SignupComponent} from './auth/signup/signup.component';
+import { AuthGuard } from './auth/auth.guard';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  { path: "", component: PacientesComponent},
-  { path: 'add-paciente', component: AddPacienteComponent},
-  {path: 'edit/:id', component: EditPacienteComponent},
+  { path: "", component: HomeComponent},
+  { path: "pacientes", component: PacientesComponent},
+  { path: 'add-paciente', component: AddPacienteComponent, canActivate: [AuthGuard]},
+  {path: 'edit/:id', component: EditPacienteComponent, canActivate: [AuthGuard]},
   {path: 'view/:id', component: ViewPacienteComponent},
   {path: 'rec-covid', component: RecomendeCovidComponent},
   {path: 'map-mental', component: MapaPComponent},
@@ -26,6 +29,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard]
 })
 export class AppRoutingModule { }

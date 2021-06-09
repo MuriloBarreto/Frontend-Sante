@@ -25,6 +25,8 @@ import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component'
 import { AuthInterceptor } from './auth/auth-interceptor'
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ArrayFiltroPipe } from './array-filtro.pipe';
+import { HomeComponent } from './home/home.component';
 
 // const appRoutes = [
 //   { path: "", component: PacientesComponent},
@@ -51,7 +53,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     FooterComponent,
     MapaCComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    ArrayFiltroPipe,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

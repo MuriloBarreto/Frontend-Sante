@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PacienteService } from 'src/app/service/paciente.service';
 import { ToastrService } from 'ngx-toastr';
+import { Subscription } from 'rxjs';
+import { UsuarioService } from 'src/app/auth/usuario.service';
 
 @Component({
   selector: 'app-pacientes',
@@ -12,10 +14,24 @@ export class PacientesComponent implements OnInit {
   data: any;
   pag : Number = 1 ;
   contador : Number = 5;
-  constructor(private pacienteService: PacienteService, private toastr: ToastrService) { }
+  public autenticado: boolean = false;
+  private authObserver: Subscription;
+  public idUsuario: string;
+  filtro: string;
+
+  constructor(private pacienteService: PacienteService, private toastr: ToastrService, private usuarioService: UsuarioService) { }
 
   ngOnInit(): void {
     this.getPacienteData();
+    this.idUsuario = this.usuarioService.getIdUsuario();
+    this.filtro = this.idUsuario;
+    this.authObserver = this.usuarioService
+    .getStatusSubject().
+    subscribe((autenticado) => this.autenticado = autenticado)
+    this.autenticado = this.usuarioService.isAutenticado();
+  }
+  ngOnDestroy(): void {
+    this.authObserver.unsubscribe();
   }
 
   getPacienteData() {

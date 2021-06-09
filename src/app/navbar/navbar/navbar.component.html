@@ -9,8 +9,11 @@
         <li class="nav-item">
           <a class="nav-link" aria-current="page" routerLink="/">Home</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="autenticado">
           <a class="nav-link" routerLink="add-paciente">Novo Paciente</a>
+        </li>
+        <li class="nav-item" *ngIf="autenticado">
+          <a class="nav-link" routerLink="pacientes">Pacientes</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="rec-covid">Recomendações</a>
@@ -21,11 +24,14 @@
       </ul>
       <div class="d-flex">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
-          <li class="nav-item">
+          <li class="nav-item"*ngIf="!autenticado">
             <a class="nav-link" routerLink="login">Login</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item"*ngIf="!autenticado">
             <a class="nav-link" routerLink="signup">Singup</a>
+          </li>
+          <li class="nav-item" *ngIf="autenticado">
+            <a class="nav-link" (click)="Logout()" routerLink="">Logout</a>
           </li>
         </ul>
       </div>

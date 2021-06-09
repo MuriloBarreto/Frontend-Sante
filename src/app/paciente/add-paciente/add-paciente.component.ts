@@ -24,7 +24,7 @@ export class AddPacienteComponent implements OnInit {
   createForm(){
     this.form = this.formBuilder.group({
       nome: ["", Validators.required],
-      idade: ["", Validators.required, Validators.email],
+      idade: ["", Validators.required],
       altura: ["", Validators.required],
       peso: ["", Validators.required],
       sexo: ["", Validators.required],
