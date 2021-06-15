@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { UsuarioService } from '../../auth/usuario.service';
+import { ToastrService } from 'ngx-toastr'
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +11,7 @@ import { UsuarioService } from '../../auth/usuario.service';
 export class NavbarComponent implements OnInit {
   private authObserver: Subscription;
   public autenticado: boolean = false;
-  constructor(private usuarioService: UsuarioService) { }
+  constructor(private usuarioService: UsuarioService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.autenticado = this.usuarioService.isAutenticado();
@@ -27,5 +28,9 @@ export class NavbarComponent implements OnInit {
 
   Logout(){
     this.usuarioService.logout();
+    this.toastr.info("","Desconectado",{
+      timeOut: 1000,
+      progressBar: true
+    })
   }
 }

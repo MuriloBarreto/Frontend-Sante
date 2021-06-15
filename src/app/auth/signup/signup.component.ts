@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { UsuarioService } from '../usuario.service';
 
@@ -21,6 +21,7 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
     this.createForm();
   }
+
 
   insert(){
     console.log(this.form.value.nome)

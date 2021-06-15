@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http'
 import { AuthData } from './auth-data.model';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr'
+import { error } from '@angular/compiler/src/util';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +15,11 @@ export class UsuarioService {
   private authStatusSubject = new Subject<boolean>();
   private tokenTimer: NodeJS.Timer;
   private idUsuario: string;
+  data;
+  public e :boolean = true;
 
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router,private toastr: ToastrService) { }
   public getToken (): string{
     return this.token;
   }
@@ -38,11 +42,26 @@ export class UsuarioService {
       email: email,
       password: senha
       }
+      this.e = true;
       this.http.post("http://localhost:3000/api/usuario/signup", authData).subscribe(resposta =>
       {
+      this.data = resposta;
+      this.e = false;
       console.log(resposta)
-      });
+      this.toastr.info(JSON.stringify(this.data.code),JSON.stringify(this.data.mensagem),{
+        timeOut: 1000,
+        progressBar: true
+      })
       this.router.navigate(['/login']);
+      }).add(error =>{
+        if(this.e){
+        this.toastr.info("401","Erro com as credenciais",{
+          timeOut: 1000,
+          progressBar: true
+        })
+       }
+      });
+
   }
 
   login (nome: string, email: string, senha: string){
@@ -51,9 +70,17 @@ export class UsuarioService {
     email: email,
     password: senha
     }
+    this.e = true;
     this.http.post<{token : string, expiresIn: number, idUsuario: string}>("http://localhost:3000/api/usuario/login", authData).subscribe(resposta => {
-    console.log(resposta)
+    // console.log("passou aqui")
+    this.data = resposta;
     this.token = resposta.token;
+    if(this.data.code == 200){
+      this.toastr.info(JSON.stringify(this.data.code),JSON.stringify(this.data.mensagem),{
+        timeOut: 1000,
+        progressBar: true
+      })
+    }
     if (this.token){
       const tempoValidadeToken = resposta.expiresIn;
       this.tokenTimer = setTimeout(() => {
@@ -63,9 +90,18 @@ export class UsuarioService {
       this.idUsuario = resposta.idUsuario;
       this.authStatusSubject.next(true);
       this.salvarDadosDeAutenticacao(this.token, new Date(new Date().getTime() + tempoValidadeToken * 1000 ), this.idUsuario);
+      this.e = false;
       this.router.navigate(['/'])
     }
-    });
+    })
+    .add(error =>{
+      if(this.e){
+      this.toastr.info("401","Email ou senha inválidos",{
+        timeOut: 1000,
+        progressBar: true
+      })
+     }
+    })
   }
 
   logout(){
