@@ -24,7 +24,7 @@ export class SignupComponent implements OnInit {
 
 
   insert(){
-    console.log(this.form.value.nome)
+    // console.log(this.form.value.nome)
     this.usurioService.criarUsuario(this.form.value.nome,this.form.value.email,this.form.value.senha);
   }
 }

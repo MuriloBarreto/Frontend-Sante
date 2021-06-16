@@ -9,6 +9,6 @@ export class NewsService {
   constructor(private httpClient: HttpClient) { }
 
   getNews() {
-    return this.httpClient.get('https://newsapi.org/v2/everything?q=Covid19&language=pt&sortBy=popularity&page=1&apiKey=sua api key aqui');
+    return this.httpClient.get('https://newsapi.org/v2/everything?q=Covid19&language=pt&sortBy=popularity&page=1&apiKey=c0c7ea450ef846fb924af5feaed00c73');
   }
 }

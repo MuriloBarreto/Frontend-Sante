@@ -11,6 +11,7 @@ import { ToastrService } from 'ngx-toastr'
 export class NavbarComponent implements OnInit {
   private authObserver: Subscription;
   public autenticado: boolean = false;
+  private userLogged: any;
   constructor(private usuarioService: UsuarioService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
@@ -19,6 +20,7 @@ export class NavbarComponent implements OnInit {
     this.usuarioService.getStatusSubject().
     subscribe((autenticado) => {
     this.autenticado = autenticado;
+    this.getUserName();
     })
   }
 
@@ -32,5 +34,10 @@ export class NavbarComponent implements OnInit {
       timeOut: 1000,
       progressBar: true
     })
+  }
+
+  getUserName(){
+    this.userLogged = this.usuarioService.getName();
+    // console.log(this.userLogged);
   }
 }

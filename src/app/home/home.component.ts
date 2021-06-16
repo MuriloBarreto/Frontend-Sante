@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
     this.news.getNews().subscribe(res => {
       this.noticias = res;
       this.not = this.noticias.articles
-      console.log(this.not);
+      // console.log(this.not);
     })
   }
 }

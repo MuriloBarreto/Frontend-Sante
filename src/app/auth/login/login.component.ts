@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit{
   }
 
   insertData(){
-    console.log(this.form.value);
+    // console.log(this.form.value);
     this.usurioService.login(this.form.value.nome,this.form.value.email,this.form.value.senha)
   }
 

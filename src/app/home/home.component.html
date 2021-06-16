@@ -1,64 +1,36 @@
 
 <div class="bg-light mb-5">
 
-  <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
+  <div id="myCarousel" class="carousel" data-bs-ride="carousel">
+    <!-- <div class="carousel-indicators">
       <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
       <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
       <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
+    </div> -->
     <div class="carousel-inner">
       <div class="carousel-item active">
-<!--        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>-->
-        <img class="bd-placeholder-img" src="https://www.melhoresdestinos.com.br/wp-content/uploads/2020/07/ilha-grande-rio-de-janeiro-capa2019-01.jpg" alt="Girl in a jacket" width="100%" height="100%">
 
-        <div class="container">
-          <div class="carousel-caption text-start">
-            <h1>Example headline.</h1>
-            <p>Some representative placeholder content for the first slide of the carousel.</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+        <img class="bd-placeholder-img" src="https://www.carlsonlawgroup.com/wp-content/uploads/2020/03/covide-19.jpg" alt="Girl in a jacket" width="100%" height="100%">
 
-        <div class="container">
-          <div class="carousel-caption">
-            <h1>Another example headline.</h1>
-            <p>Some representative placeholder content for the second slide of the carousel.</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
 
-        <div class="container">
-          <div class="carousel-caption text-end">
-            <h1>One more for good measure.</h1>
-            <p>Some representative placeholder content for the third slide of this carousel.</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
-          </div>
-        </div>
       </div>
+
+
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+    <!-- <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
     </button>
     <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
-    </button>
+     </button>  -->
   </div>
 
 
-  <!-- Marketing messaging and featurettes
-  ================================================== -->
-  <!-- Wrap the rest of the page in another container to center all the content. -->
 
-  <div class="container marketing">
+
+  <div class="container">
 
 
 
@@ -69,7 +41,7 @@
 
     <div class="row">
 
-      <div class="card col-5 ms-4 mt-2" *ngFor="let n of not" style="width: 18rem;">
+      <div class="card col-5 ms-4 mt-2 py-2" *ngFor="let n of not" style="width: 18rem;">
         <img src="{{n.urlToImage}}" class="card-img-top" alt="{{n.title}}">
         <div class="card-body">
           <h2 class="card-title">{{n.title}}</h2>
@@ -90,7 +62,7 @@
 
     <!-- /END THE FEATURETTES -->
 
-  </div><!-- /.container -->
+  </div>
 
 
 </div>

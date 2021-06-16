@@ -28,16 +28,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ArrayFiltroPipe } from './array-filtro.pipe';
 import { HomeComponent } from './home/home.component';
 
-// const appRoutes = [
-//   { path: "", component: PacientesComponent},
-//   { path: 'add-paciente', component: AddPacienteComponent},
-//   {path: 'edit/:id', component: EditPacienteComponent},
-//   {path: 'view/:id', component: ViewPacienteComponent},
-//   {path: 'rec-covid', component: RecomendeCovidComponent},
-//   {path: 'map-mental', component: MapaPComponent},
-//   {path: 'bem-estar', component: BemEstarComponent},
-//   {path: 'map-clinica', component: MapaCComponent},
-// ]
 
 @NgModule({
   declarations: [

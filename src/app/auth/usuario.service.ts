@@ -15,11 +15,13 @@ export class UsuarioService {
   private authStatusSubject = new Subject<boolean>();
   private tokenTimer: NodeJS.Timer;
   private idUsuario: string;
+  private nomeUsuario: string;
   data;
   public e :boolean = true;
 
 
   constructor(private http: HttpClient, private router: Router,private toastr: ToastrService) { }
+
   public getToken (): string{
     return this.token;
   }
@@ -36,6 +38,10 @@ export class UsuarioService {
     return this.idUsuario;
   }
 
+  public getName (){
+    return this.nomeUsuario
+  }
+
   criarUsuario (nome: string, email: string, senha: string){
     const authData: AuthData = {
       name: nome,
@@ -47,7 +53,7 @@ export class UsuarioService {
       {
       this.data = resposta;
       this.e = false;
-      console.log(resposta)
+      // console.log(resposta)
       this.toastr.info(JSON.stringify(this.data.code),JSON.stringify(this.data.mensagem),{
         timeOut: 1000,
         progressBar: true
@@ -71,8 +77,8 @@ export class UsuarioService {
     password: senha
     }
     this.e = true;
-    this.http.post<{token : string, expiresIn: number, idUsuario: string}>("http://localhost:3000/api/usuario/login", authData).subscribe(resposta => {
-    // console.log("passou aqui")
+    this.http.post<{token : string, expiresIn: number, idUsuario: string, name: string}>("http://localhost:3000/api/usuario/login", authData).subscribe(resposta => {
+    // console.log(resposta);
     this.data = resposta;
     this.token = resposta.token;
     if(this.data.code == 200){
@@ -88,8 +94,9 @@ export class UsuarioService {
       },tempoValidadeToken * 1000);
       this.autenticado = true;
       this.idUsuario = resposta.idUsuario;
+      this.nomeUsuario = resposta.name;
       this.authStatusSubject.next(true);
-      this.salvarDadosDeAutenticacao(this.token, new Date(new Date().getTime() + tempoValidadeToken * 1000 ), this.idUsuario);
+      this.salvarDadosDeAutenticacao(this.token, new Date(new Date().getTime() + tempoValidadeToken * 1000 ), this.idUsuario, this.nomeUsuario);
       this.e = false;
       this.router.navigate(['/'])
     }
@@ -108,20 +115,23 @@ export class UsuarioService {
     this.token = null;
     clearTimeout(this.tokenTimer);
     this.idUsuario = null;
+    this.nomeUsuario = null;
     this.removerDadosDeAutenticacao();
     this.authStatusSubject.next(false);
   }
 
-  private salvarDadosDeAutenticacao (token: string, validade: Date, idUsuario: string){
+  private salvarDadosDeAutenticacao (token: string, validade: Date, idUsuario: string, nomeUsuario: string){
     localStorage.setItem('token', token);
     localStorage.setItem('validade', validade.toISOString());
     localStorage.setItem('idUsuario', idUsuario);
+    localStorage.setItem('nomeUsuario', nomeUsuario);
   }
 
   private removerDadosDeAutenticacao (){
     localStorage.removeItem('token');
     localStorage.removeItem('validade');
     localStorage.removeItem('idUsuario');
+    localStorage.removeItem('nomeUsuario')
   }
 
   autenticarAutomaticamente (){
@@ -132,10 +142,10 @@ export class UsuarioService {
     //verificamos a diferenca entre a validade e a data atual
     const diferenca = dadosAutenticacao.validade.getTime() - agora.getTime();
     //se a diferença for positiva, o token ainda vale
-    console.log (diferenca);
+    // console.log (diferenca);
     if (diferenca > 0){
     this.token = dadosAutenticacao.token;
-    console.log(dadosAutenticacao);
+    // console.log(dadosAutenticacao);
     this.autenticado = true;
     this.idUsuario = dadosAutenticacao.idUsuario;
     //diferença ja esta em milissegundos, não multiplique!
@@ -151,8 +161,9 @@ export class UsuarioService {
       const token = localStorage.getItem ('token');
       const validade = localStorage.getItem ('validade');
       const idUsuario = localStorage.getItem("idUsuario");
+      const nomeUsuario = localStorage.getItem("nomeUsuario");
       if (token && validade) {
-        return {token: token, validade: new Date(validade), idUsuario: idUsuario}
+        return {token: token, validade: new Date(validade), idUsuario: idUsuario, nomeUsuario: nomeUsuario}
       }
       return null;
     }
