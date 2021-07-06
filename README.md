@@ -1,27 +1,28 @@
-# Sante
+# 🩺 Sante
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.6.
+Um projeto de um website feito para fazer triagens de usuarios cadastrados no sistema, e mandar recomendações diversas para manter um boa saúde dos pacientes.
 
-## Development server
+### 🤔 Como Usar
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+```
+   - Clone esse repositório:
+   $ git clone https://github.com/MuriloBarreto/Frontend-Sante.git
 
-## Code scaffolding
+   - Entre no diretório:
+   $ cd Frontend-Sante
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+   - Instale as dependências:
+   $ npm install
 
-## Build
+   - Inicie o projeto: 
+   $ ng serve --o
+  ```
+ * [Backend do projeto](https://github.com/luismapeli/sante/tree/master/backend)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## 🛠️ Construído com
 
-## Running unit tests
+* [Angular](https://angular.io/docs)
+* [Bootstrap](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+---
+Feito com ❤️ por [Murilo Barreto](https://github.com/MuriloBarreto)
